@@ -4,7 +4,8 @@ import { Styles } from './styles';
 export const TextInput = (): JSX.Element => {
   return (
     <Styles.Container>
-      <input type="text" />
+      <span>Your password</span>
+      <input type="text" placeholder="Your username" />
     </Styles.Container>
   );
 };

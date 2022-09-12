@@ -20,7 +20,7 @@ export const TitlePageWithAction = ({
         {title}
       </Text>
 
-      <LinkButton route={route} text={text} />
+      <LinkButton route={route} text={text} bold />
     </Styles.Container>
   );
 };

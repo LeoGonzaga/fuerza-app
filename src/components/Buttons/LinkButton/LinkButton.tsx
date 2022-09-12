@@ -4,11 +4,12 @@ import { Styles } from './styles';
 type LinkButtonProps = {
   route: string;
   text: string;
+  bold?: boolean;
 };
 
-export const LinkButton = ({ text }: LinkButtonProps): JSX.Element => {
+export const LinkButton = ({ text, bold }: LinkButtonProps): JSX.Element => {
   return (
-    <Styles.Container>
+    <Styles.Container bold={bold}>
       {/* <Link to={route}>{text}</Link> */}
       <p>{text}</p>
     </Styles.Container>
