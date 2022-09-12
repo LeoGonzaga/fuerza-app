@@ -1,4 +1,5 @@
 import React from 'react';
+import { COLORS } from '../../constants/colors';
 import LinkButton from '../Buttons/LinkButton';
 import Text from '../Text';
 import { Styles } from './styles';
@@ -15,7 +16,9 @@ export const TitlePageWithAction = ({
 }: TitlePageWithActionProps): JSX.Element => {
   return (
     <Styles.Container>
-      <Text size={32}>{title}</Text>
+      <Text size={32} color={COLORS.primary}>
+        {title}
+      </Text>
 
       <LinkButton route={route} text={text} />
     </Styles.Container>

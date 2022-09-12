@@ -8,6 +8,15 @@ type TextProps = {
   bold?: boolean;
 };
 
-export const Text = ({ children, size }: TextProps): JSX.Element => {
-  return <Styles.Container size={size}>{children}</Styles.Container>;
+export const Text = ({
+  children,
+  size,
+  bold,
+  color,
+}: TextProps): JSX.Element => {
+  return (
+    <Styles.Container size={size} color={color} bold={bold}>
+      {children}
+    </Styles.Container>
+  );
 };

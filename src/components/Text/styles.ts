@@ -6,6 +6,8 @@ const Container = styled.p<{
   color?: string;
 }>`
   font-size: ${(props) => (props.size ? `${props.size}px` : '14px')};
+  color: ${(props) => (props.color ? props.color : 'initial')};
+  font-weight: ${(props) => (props.bold ? 'bold' : 'initial')};
 `;
 
 export const Styles = {
