@@ -6,6 +6,7 @@ type TextProps = {
   size?: number;
   color?: string;
   bold?: boolean;
+  fontType?: boolean;
 };
 
 export const Text = ({
@@ -13,9 +14,10 @@ export const Text = ({
   size,
   bold,
   color,
+  fontType,
 }: TextProps): JSX.Element => {
   return (
-    <Styles.Container size={size} color={color} bold={bold}>
+    <Styles.Container fontType={fontType} size={size} color={color} bold={bold}>
       {children}
     </Styles.Container>
   );
