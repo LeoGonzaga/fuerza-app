@@ -7,6 +7,8 @@ const Container = styled.div`
   justify-content: center;
   height: 100vh;
 
+  overflow: hidden;
+
   > img {
     position: absolute;
     z-index: -1;

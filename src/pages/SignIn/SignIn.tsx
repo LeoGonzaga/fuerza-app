@@ -9,15 +9,20 @@ import { Styles } from './styles';
 import Row from '../../components/Row';
 import Logo from '../../components/Logo';
 import Template from '../../components/Template';
+import { ROUTES } from '../../constants/routes';
 
-export const Login = (): JSX.Element => {
+export const SignIn = (): JSX.Element => {
   return (
     <Template>
       <Styles.Container>
         <form action="">
           <Logo />
           <Spacing top={78} />
-          <TitlePageWithAction title="Sign In" route="/login" text="Sign Up" />
+          <TitlePageWithAction
+            title="Sign In"
+            route={ROUTES.SIGN_UP}
+            text="Sign Up"
+          />
           <TextInput placeholder="Your usename" />
           <Spacing top={29} />
           <TextInput placeholder="Your password" />

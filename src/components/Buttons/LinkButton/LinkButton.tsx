@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Styles } from './styles';
 
 type LinkButtonProps = {
@@ -7,11 +8,16 @@ type LinkButtonProps = {
   bold?: boolean;
 };
 
-export const LinkButton = ({ text, bold }: LinkButtonProps): JSX.Element => {
+export const LinkButton = ({
+  text,
+  bold,
+  route,
+}: LinkButtonProps): JSX.Element => {
   return (
     <Styles.Container bold={bold}>
-      {/* <Link to={route}>{text}</Link> */}
-      <p>{text}</p>
+      <Link to={route}>
+        <p>{text}</p>
+      </Link>
     </Styles.Container>
   );
 };
