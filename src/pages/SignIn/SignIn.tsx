@@ -13,7 +13,7 @@ import { ROUTES } from '../../constants/routes';
 
 export const SignIn = (): JSX.Element => {
   return (
-    <Template>
+    <Template center>
       <Styles.Container>
         <form action="">
           <Logo />

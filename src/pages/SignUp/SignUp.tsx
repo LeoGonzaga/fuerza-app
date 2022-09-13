@@ -13,7 +13,7 @@ import { ROUTES } from '../../constants/routes';
 
 export const SignUp = (): JSX.Element => {
   return (
-    <Template>
+    <Template center>
       <Styles.Container>
         <form action="">
           <Logo />
@@ -23,9 +23,11 @@ export const SignUp = (): JSX.Element => {
             route={ROUTES.SIGN_IN}
             text="Already have an account"
           />
-          <TextInput placeholder="Your usename" />
+          <TextInput placeholder="Define a username" />
           <Spacing top={29} />
-          <TextInput placeholder="Your password" />
+          <TextInput placeholder="Set your password" />
+          <Spacing top={29} />
+          <TextInput placeholder="Email (optinal)" />
           <Spacing top={12} />
 
           <Row justify="flex-end">
@@ -33,7 +35,7 @@ export const SignUp = (): JSX.Element => {
           </Row>
           <Spacing top={40} />
           <Row justify="center">
-            <ActionButton>Log In</ActionButton>
+            <ActionButton>Create account</ActionButton>
           </Row>
         </form>
       </Styles.Container>

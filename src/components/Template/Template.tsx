@@ -5,11 +5,12 @@ import background from '../../assets/bg.svg';
 
 type TemplateProps = {
   children: React.ReactNode;
+  center?: boolean;
 };
 
-export const Template = ({ children }: TemplateProps): JSX.Element => {
+export const Template = ({ children, center }: TemplateProps): JSX.Element => {
   return (
-    <Styles.Container>
+    <Styles.Container center={center}>
       <img src={background} alt="" />
       {children}
     </Styles.Container>
