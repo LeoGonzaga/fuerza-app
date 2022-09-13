@@ -1,5 +1,6 @@
 export const ROUTES = {
-  SIGN_IN: 'signin',
-  SIGN_UP: 'signup',
-  JOURNAL_LIST: 'journal-list',
+  SIGN_IN: '/signin',
+  SIGN_UP: '/signup',
+  JOURNAL_LIST: '/journal-list',
+  CREATE_JOURNAL: '/create-journal',
 };
