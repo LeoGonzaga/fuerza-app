@@ -1,7 +1,14 @@
-import React from "react"
+import React from 'react';
+import Login from './pages/Login';
+import { GlobalStyles } from './themes/global.theme';
 
-function App(){
-    return <h1>Fuerza Test</h1>
+function App() {
+  return (
+    <>
+      <GlobalStyles />
+      <Login />
+    </>
+  );
 }
 
-export default App
+export default App;
