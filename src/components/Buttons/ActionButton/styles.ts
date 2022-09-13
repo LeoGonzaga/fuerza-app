@@ -5,7 +5,7 @@ const Container = styled.button`
   background-color: ${COLORS.primary};
   color: #fff;
 
-  font-weight: bold;
+  font-weight: 600;
   border: none;
   outline: none;
 
