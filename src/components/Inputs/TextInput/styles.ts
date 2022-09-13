@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { COLORS } from '../../../constants/colors';
 import { FadeInAnimation } from '../../../themes/animations';
+import { PLACEHOLDER_COLOR } from '../../../themes/utils';
 
 const Container = styled.div<{ focus?: boolean }>`
   height: 40px;
@@ -26,13 +27,7 @@ const Container = styled.div<{ focus?: boolean }>`
     border: none;
     font-size: 12px;
     animation: ${FadeInAnimation} 0.2s ease-in-out;
-    ::placeholder,
-    ::-webkit-input-placeholder {
-      color: ${COLORS.primary};
-    }
-    :-ms-input-placeholder {
-      color: ${COLORS.primary};
-    }
+    ${PLACEHOLDER_COLOR}
   }
 
   &:focus {
