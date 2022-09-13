@@ -1,14 +1,13 @@
 import React from 'react';
+import EmptyState from '../../components/EmptyState';
 import Header from '../../components/Header';
 import Template from '../../components/Template';
 
-import EmptyState from '../../components/EmptyState';
-
-export const JournalList = (): JSX.Element => {
+export const PostList = (): JSX.Element => {
   return (
     <Template>
       <Header />
-      <EmptyState />
+      <EmptyState showText />
     </Template>
   );
 };
