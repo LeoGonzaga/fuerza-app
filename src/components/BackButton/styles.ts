@@ -11,6 +11,7 @@ const Container = styled.div`
     background-color: transparent;
     border: none;
     margin-right: 19px;
+    cursor: pointer;
   }
 `;
 

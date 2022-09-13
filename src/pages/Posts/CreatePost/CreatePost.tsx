@@ -5,13 +5,14 @@ import Header from '../../../components/Header';
 import Row from '../../../components/Row';
 import Spacing from '../../../components/Spacing';
 import Template from '../../../components/Template';
+import { ROUTES } from '../../../constants/routes';
 import { Styles } from './styles';
 
 export const CreatePost = (): JSX.Element => {
   return (
     <Template>
       <Header />
-      <BackButton />
+      <BackButton route={ROUTES.POST_LIST} />
       <Styles.Container>
         <form action="">
           <input type="text" placeholder="Title" />
