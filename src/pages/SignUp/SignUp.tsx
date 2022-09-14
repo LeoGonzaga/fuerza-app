@@ -16,7 +16,7 @@ export const SignUp = (): JSX.Element => {
     <Template center>
       <Styles.Container>
         <form action="">
-          <Logo />
+          <Logo size={206} />
           <Spacing top={78} />
           <TitlePageWithAction
             title="Sign Un"

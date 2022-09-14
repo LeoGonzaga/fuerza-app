@@ -5,11 +5,12 @@ import Template from '../../../components/Template';
 
 import Cover from '../../../assets/cover.svg';
 import { Styles } from './styles';
+import { ROUTES } from '../../../constants/routes';
 
 export const CreateJournal = (): JSX.Element => {
   return (
     <Template>
-      <Header />
+      <Header text="Add Journal" showButton router={ROUTES.CREATE_JOURNAL} />
       <Styles.Container>
         <span>HTML</span>
         <img src={Cover} alt="" />
