@@ -11,6 +11,7 @@ const Container = styled.button`
   align-items: center;
   padding: 12px;
 
+  min-width: 120px;
   img {
     margin-right: 8px;
   }

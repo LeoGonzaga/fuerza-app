@@ -17,4 +17,8 @@ input, textarea, button,p {
   font-family: 'Montserrat', sans-serif;
 }
 
+a{
+  text-decoration: none;
+}
+
 `;
