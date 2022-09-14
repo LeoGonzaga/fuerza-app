@@ -31,7 +31,7 @@ export const TextInput = ({
         onBlur={handleRemoveOnFocusInBlur}
         onChange={onChange}
       />
-      {error && <span>this field cannot be empty</span>}
+      {error && <span>This field cannot be empty</span>}
     </Styles.Container>
   );
 };

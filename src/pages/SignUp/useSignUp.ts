@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
 import http from '../../services/api';
 import { AuthResponse } from '../../services/mirage/routes/user';
-import { checkEmptyInputs } from '../../utils';
+import { checkEmptyInputs, checkInputLenght } from '../../utils';
 
 const useSignUp = () => {
   const history = useHistory();
@@ -40,13 +40,13 @@ const useSignUp = () => {
 
     const checkUsername = checkEmptyInputs(username);
     const checkPassword = checkEmptyInputs(password);
-
+    const checkPasswordLength = checkInputLenght(password);
     setErrors({
-      password: checkPassword,
+      password: checkPassword || checkPasswordLength,
       username: checkUsername,
     });
 
-    if (checkUsername || checkPassword) return;
+    if (checkUsername || checkPassword || checkPasswordLength) return;
 
     const { token }: AuthResponse = await http.post('/auth/signup', {
       username,
@@ -55,7 +55,6 @@ const useSignUp = () => {
     });
 
     if (token) {
-      localStorage.setItem('token', token);
       history.replace({
         pathname: ROUTES.SIGN_IN,
       });
