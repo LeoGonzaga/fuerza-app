@@ -11,15 +11,15 @@ type BackButtonProps = {
 
 export const BackButton = ({ route }: BackButtonProps): JSX.Element => {
   return (
-    <Styles.Container>
-      <Link to={route}>
+    <Link to={route}>
+      <Styles.Container>
         <button>
           <img src={BackArrow} alt="" />
         </button>
-      </Link>
-      <Text fontType size={24} bold>
-        HTML
-      </Text>
-    </Styles.Container>
+        <Text fontType size={24} bold>
+          HTML
+        </Text>
+      </Styles.Container>
+    </Link>
   );
 };
