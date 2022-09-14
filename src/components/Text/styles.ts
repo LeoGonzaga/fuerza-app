@@ -10,7 +10,7 @@ const Container = styled.p<{
   color: ${(props) => (props.color ? props.color : 'initial')};
   font-weight: ${(props) => (props.bold ? 'bold' : 'initial')};
   font-family: ${(props) =>
-    props.fontType ? 'Abhaya Libre,serif' : 'initial'};
+    props.fontType ? 'Abhaya Libre,serif' : 'Montserrat,sans-serif'};
 `;
 
 export const Styles = {

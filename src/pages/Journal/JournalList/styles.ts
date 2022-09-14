@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FadeInAnimation } from '../../../themes/animations';
 
 const Container = styled.div`
   width: 100%;
@@ -9,6 +10,8 @@ const Container = styled.div`
 
   overflow-y: auto;
   overflow-x: hidden;
+
+  animation: ${FadeInAnimation} 0.2s ease-in-out;
 `;
 
 export const Styles = {

@@ -7,11 +7,12 @@ import Template from '../../../components/Template';
 import Cover from '../../../components/Cover';
 import { Styles } from './styles';
 import Spacing from '../../../components/Spacing';
+import { ROUTES } from '../../../constants/routes';
 
 export const JournalList = (): JSX.Element => {
   return (
     <Template>
-      <Header />
+      <Header showButton text="Add Journal" router={ROUTES.CREATE_JOURNAL} />
       <Styles.Container>
         <Cover />
         <Cover dark />

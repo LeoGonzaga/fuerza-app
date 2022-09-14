@@ -1,17 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ROUTES } from '../../constants/routes';
+import OutlineButton from '../Buttons/OutlineButton';
 import Logo from '../Logo';
 import Row from '../Row';
 import { Styles } from './styles';
 
-export const Header = () => {
+type HeaderProps = {
+  text?: string;
+  router?: string;
+  showButton?: boolean;
+};
+
+export const Header = ({ router, showButton, text }: HeaderProps) => {
   return (
     <Styles.Container>
       <Row justify="space-between">
-        <Link to={ROUTES.JOURNAL_LIST}>
-          <Logo size={146} />
-        </Link>
+        <Logo size={146} />
+        {showButton && <OutlineButton text={text} route={router} />}
       </Row>
     </Styles.Container>
   );

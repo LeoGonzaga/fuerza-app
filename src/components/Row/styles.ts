@@ -5,6 +5,7 @@ const Container = styled.div<{
 }>`
   display: flex;
   justify-content: ${(props) => props.justify};
+  align-items: center;
 `;
 
 export const Styles = { Container };
