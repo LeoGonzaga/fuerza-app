@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { COLORS } from '../../../constants/colors';
+import { PLACEHOLDER_COLOR } from '../../../themes/utils';
 
 const Container = styled.div`
   height: 100%;
@@ -24,6 +26,11 @@ const Container = styled.div`
     height: 40px;
     width: 320px;
     outline: none;
+    padding: 0px 10px;
+    font-weight: 600;
+    color: ${COLORS.primary};
+
+    ${PLACEHOLDER_COLOR}
   }
 `;
 

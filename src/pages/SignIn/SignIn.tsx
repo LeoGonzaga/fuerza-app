@@ -19,6 +19,7 @@ export const SignIn = (): JSX.Element => {
     handleChangeUsername,
     handleChangePassword,
     handleSubmit,
+    errors,
   } = useSignIn();
 
   return (
@@ -36,6 +37,7 @@ export const SignIn = (): JSX.Element => {
             placeholder="Your usename"
             value={username}
             onChange={handleChangeUsername}
+            error={errors.username}
           />
           <Spacing top={29} />
           <TextInput
@@ -43,6 +45,7 @@ export const SignIn = (): JSX.Element => {
             type="password"
             value={password}
             onChange={handleChangePassword}
+            error={errors.password}
           />
           <Spacing top={12} />
 

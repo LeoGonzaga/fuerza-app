@@ -35,13 +35,14 @@ const useSignIn = () => {
 
     if (checkUsername || checkPassword || checkPasswordLength) return;
 
-    const { token }: AuthResponse = await http.post('/auth/login', {
+    const { token, user }: AuthResponse = await http.post('/auth/login', {
       username,
       password,
     });
 
     if (token) {
       localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
       history.replace({
         pathname: ROUTES.JOURNAL_LIST,
       });
