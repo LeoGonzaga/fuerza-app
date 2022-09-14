@@ -3,10 +3,11 @@ import { COLORS } from '../../../constants/colors';
 import { FadeInAnimation } from '../../../themes/animations';
 import { PLACEHOLDER_COLOR } from '../../../themes/utils';
 
-const Container = styled.div<{ focus?: boolean }>`
+const Container = styled.div<{ focus?: boolean; error: boolean }>`
   height: 40px;
   background-color: #fff;
-  border: 1px solid rgba(157, 164, 166, 0.07);
+  border: ${(props) =>
+    props.error ? '1px solid red' : '1px solid rgba(157, 164, 166, 0.07)'};
   border-radius: 4px;
   label {
     animation: ${FadeInAnimation} 0.2s ease-in-out;

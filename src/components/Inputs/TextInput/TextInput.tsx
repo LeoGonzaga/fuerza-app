@@ -15,13 +15,17 @@ export const TextInput = ({
   placeholder,
   value,
   type = 'text',
-  error,
+  error = false,
 }: TextInputProps): JSX.Element => {
   const { handleSetOnFocusWhenClickInput, handleRemoveOnFocusInBlur, onFocus } =
     useTextInput();
 
   return (
-    <Styles.Container onClick={handleSetOnFocusWhenClickInput} focus={onFocus}>
+    <Styles.Container
+      onClick={handleSetOnFocusWhenClickInput}
+      focus={onFocus}
+      error={error}
+    >
       {onFocus && <label>{placeholder}</label>}
       <input
         type={type}
@@ -31,7 +35,6 @@ export const TextInput = ({
         onBlur={handleRemoveOnFocusInBlur}
         onChange={onChange}
       />
-      {error && <span>This field cannot be empty</span>}
     </Styles.Container>
   );
 };

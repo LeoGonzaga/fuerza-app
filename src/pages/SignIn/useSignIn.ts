@@ -6,6 +6,11 @@ import { AuthResponse } from '../../services/mirage/routes/user';
 import { useNotificationStore, useUserStore } from '../../store/user';
 import { checkEmptyInputs, checkInputLenght } from '../../utils';
 
+const ERROR_TEXTS = {
+  username: 'This username is not a valid username',
+  lengthPass: 'enter a password of 6 or more characters',
+};
+
 const useSignIn = () => {
   const history = useHistory();
   const { setUser }: any = useUserStore();
@@ -19,24 +24,39 @@ const useSignIn = () => {
 
   const handleChangeUsername = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setUsername(target.value);
+    setErrors({
+      ...errors,
+      username: false,
+    });
   };
 
   const handleChangePassword = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setPassword(target.value);
+    setErrors({
+      ...errors,
+      password: false,
+    });
   };
 
   const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const checkUsername = checkEmptyInputs(username);
-    const checkPassword = checkEmptyInputs(password);
-    const checkPasswordLength = checkInputLenght(password);
+    const checkPassword = checkInputLenght(password);
     setErrors({
-      password: checkPassword || checkPasswordLength,
+      password: checkPassword,
       username: checkUsername,
     });
 
-    if (checkUsername || checkPassword || checkPasswordLength) return;
+    if (checkUsername || checkPassword) {
+      const payload = {
+        open: true,
+        message: checkUsername ? ERROR_TEXTS.username : ERROR_TEXTS.lengthPass,
+        error: true,
+      };
+      setNotification(payload);
+      return;
+    }
 
     const response: AuthResponse = await http.post('/auth/login', {
       username,
@@ -59,7 +79,6 @@ const useSignIn = () => {
       };
 
       setNotification(payload);
-      console.log('aqui', response);
     }
   };
 
