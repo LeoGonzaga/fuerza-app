@@ -10,13 +10,25 @@ const useSignUp = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [email, setEmail] = useState<string>('');
+  const [errors, setErrors] = useState({
+    username: false,
+    password: false,
+  });
 
   const handleChangeUsername = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setUsername(target.value);
+    setErrors({
+      ...errors,
+      username: false,
+    });
   };
 
   const handleChangePassword = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setPassword(target.value);
+    setErrors({
+      ...errors,
+      password: false,
+    });
   };
 
   const handleChangeEmail = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -28,6 +40,11 @@ const useSignUp = () => {
 
     const checkUsername = checkEmptyInputs(username);
     const checkPassword = checkEmptyInputs(password);
+
+    setErrors({
+      password: checkPassword,
+      username: checkUsername,
+    });
 
     if (checkUsername || checkPassword) return;
 
@@ -49,6 +66,7 @@ const useSignUp = () => {
     username,
     password,
     email,
+    errors,
     handleChangeUsername,
     handleChangePassword,
     handleChangeEmail,

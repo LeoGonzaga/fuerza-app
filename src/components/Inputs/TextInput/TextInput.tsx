@@ -6,6 +6,7 @@ type TextInputProps = {
   value?: string;
   type?: string;
   placeholder?: string;
+  error?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -14,6 +15,7 @@ export const TextInput = ({
   placeholder,
   value,
   type = 'text',
+  error,
 }: TextInputProps): JSX.Element => {
   const { handleSetOnFocusWhenClickInput, handleRemoveOnFocusInBlur, onFocus } =
     useTextInput();
@@ -29,6 +31,7 @@ export const TextInput = ({
         onBlur={handleRemoveOnFocusInBlur}
         onChange={onChange}
       />
+      {error && <span>this field cannot be empty</span>}
     </Styles.Container>
   );
 };

@@ -30,6 +30,12 @@ const Container = styled.div<{ focus?: boolean }>`
     ${PLACEHOLDER_COLOR}
   }
 
+  span {
+    font-size: 12px;
+    color: red;
+    padding: 10px 0px 0px 10px;
+  }
+
   &:focus {
     box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.01);
     filter: drop-shadow(0px 0px 4px #b8e5e3) drop-shadow(0px 0px 2px #b8e5e3);
