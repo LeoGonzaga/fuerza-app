@@ -2,10 +2,12 @@ import { ChangeEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ROUTES } from '../../../constants/routes';
 import http from '../../../services/api';
+import { useUserStore } from '../../../store/user';
 import { checkEmptyInputs } from '../../../utils';
 
 const useCreateJournal = () => {
   const history = useHistory();
+  const { user }: any = useUserStore();
   const [title, setTitle] = useState<string>('');
 
   const handleChangeTitle = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -13,17 +15,14 @@ const useCreateJournal = () => {
   };
 
   const handelCreateJournal = async () => {
-    const user = localStorage.getItem('user');
-
     const checkTitle = checkEmptyInputs(title);
 
     if (checkTitle) return;
 
     if (user) {
-      const parseUser = JSON.parse(user || '');
       const response: any = await http.post('/journals', {
         title,
-        userId: parseUser.id,
+        userId: user.id,
       });
       if (response?.journal) {
         history.push(ROUTES.JOURNAL_LIST);

@@ -7,18 +7,13 @@ import { Styles } from './styles';
 type CoverProps = {
   dark?: boolean;
   title: string;
-  id: string;
 };
 
-export const Cover = ({ dark, title, id }: CoverProps): JSX.Element => {
+export const Cover = ({ dark, title }: CoverProps): JSX.Element => {
   return (
     <Link
       to={{
         pathname: ROUTES.POST_LIST,
-        state: {
-          id,
-          title,
-        },
       }}
     >
       <Styles.Container>

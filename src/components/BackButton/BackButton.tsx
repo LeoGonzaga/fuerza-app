@@ -7,9 +7,10 @@ import { Link } from 'react-router-dom';
 
 type BackButtonProps = {
   route: string;
+  title: string;
 };
 
-export const BackButton = ({ route }: BackButtonProps): JSX.Element => {
+export const BackButton = ({ route, title }: BackButtonProps): JSX.Element => {
   return (
     <Link to={route}>
       <Styles.Container>
@@ -17,7 +18,7 @@ export const BackButton = ({ route }: BackButtonProps): JSX.Element => {
           <img src={BackArrow} alt="" />
         </button>
         <Text fontType size={24} bold>
-          HTML
+          {title}
         </Text>
       </Styles.Container>
     </Link>
