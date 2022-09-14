@@ -1,15 +1,11 @@
 import { ChangeEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
+import { ERROR_TEXTS } from '../../constants/texts';
 import http from '../../services/api';
 import { AuthResponse } from '../../services/mirage/routes/user';
 import { useNotificationStore, useUserStore } from '../../store/user';
 import { checkEmptyInputs, checkInputLenght } from '../../utils';
-
-const ERROR_TEXTS = {
-  username: 'This username is not a valid username',
-  lengthPass: 'enter a password of 6 or more characters',
-};
 
 const useSignIn = () => {
   const history = useHistory();
@@ -68,9 +64,12 @@ const useSignIn = () => {
       sessionStorage.setItem('token', token);
       sessionStorage.setItem('user', JSON.stringify(user));
       setUser(user);
-      history.replace({
-        pathname: ROUTES.JOURNAL_LIST,
-      });
+
+      setTimeout(() => {
+        history.replace({
+          pathname: ROUTES.JOURNAL_LIST,
+        });
+      }, 2000);
     } else {
       const payload = {
         open: true,

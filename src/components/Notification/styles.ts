@@ -9,7 +9,7 @@ const Container = styled.div<{ open: boolean; error: boolean }>`
   height: 70px;
   width: 80%;
   border-radius: 4px;
-
+  z-index: 10000;
   display: ${(props) => (props.open ? 'flex' : 'none')};
   align-items: center;
   background-color: ${(props) => (props.error ? '#f27457' : '#47C2A6')};
