@@ -9,6 +9,7 @@ import { ROUTES } from '../../../constants/routes';
 import { Styles } from './styles';
 
 export const CreatePost = (): JSX.Element => {
+  const handel = () => {};
   return (
     <Template>
       <Header />
@@ -19,7 +20,7 @@ export const CreatePost = (): JSX.Element => {
           <textarea name="note" placeholder="Write your note"></textarea>
           <Spacing top={37} />
           <Row justify="center">
-            <ActionButton>Save note</ActionButton>
+            <ActionButton onClick={handel}>Save note</ActionButton>
           </Row>
         </form>
       </Styles.Container>

@@ -8,6 +8,7 @@ import { Styles } from './styles';
 import { ROUTES } from '../../../constants/routes';
 
 export const CreateJournal = (): JSX.Element => {
+  const handle = () => {};
   return (
     <Template>
       <Header text="Add Journal" showButton router={ROUTES.CREATE_JOURNAL} />
@@ -16,7 +17,7 @@ export const CreateJournal = (): JSX.Element => {
         <img src={Cover} alt="" />
 
         <input type="text" />
-        <ActionButton>Save journal</ActionButton>
+        <ActionButton onClick={handle}>Save journal</ActionButton>
       </Styles.Container>
     </Template>
   );

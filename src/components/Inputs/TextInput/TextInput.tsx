@@ -4,6 +4,7 @@ import useTextInput from './useTextInput';
 
 type TextInputProps = {
   value?: string;
+  type?: string;
   placeholder?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
@@ -12,6 +13,7 @@ export const TextInput = ({
   onChange,
   placeholder,
   value,
+  type = 'text',
 }: TextInputProps): JSX.Element => {
   const { handleSetOnFocusWhenClickInput, handleRemoveOnFocusInBlur, onFocus } =
     useTextInput();
@@ -20,7 +22,7 @@ export const TextInput = ({
     <Styles.Container onClick={handleSetOnFocusWhenClickInput} focus={onFocus}>
       {onFocus && <label>{placeholder}</label>}
       <input
-        type="text"
+        type={type}
         value={value}
         autoFocus
         placeholder={placeholder}
