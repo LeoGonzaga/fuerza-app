@@ -4,7 +4,6 @@ const useTextInput = () => {
   const [onFocus, setOnFocus] = useState<boolean>(false);
 
   const handleSetOnFocusWhenClickInput = () => {
-    console.log('asdasd');
     setOnFocus(true);
   };
 

@@ -1,12 +1,16 @@
 import { ChangeEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ROUTES } from '../../constants/routes';
+import { ERROR_TEXTS } from '../../constants/texts';
 import http from '../../services/api';
 import { AuthResponse } from '../../services/mirage/routes/user';
+import { useNotificationStore, useUserStore } from '../../store/user';
 import { checkEmptyInputs, checkInputLenght } from '../../utils';
 
 const useSignIn = () => {
   const history = useHistory();
+  const { setUser }: any = useUserStore();
+  const { setNotification }: any = useNotificationStore();
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errors, setErrors] = useState({
@@ -16,36 +20,64 @@ const useSignIn = () => {
 
   const handleChangeUsername = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setUsername(target.value);
+    setErrors({
+      ...errors,
+      username: false,
+    });
   };
 
   const handleChangePassword = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setPassword(target.value);
+    setErrors({
+      ...errors,
+      password: false,
+    });
   };
 
   const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const checkUsername = checkEmptyInputs(username);
-    const checkPassword = checkEmptyInputs(password);
-    const checkPasswordLength = checkInputLenght(password);
+    const checkPassword = checkInputLenght(password);
     setErrors({
-      password: checkPassword || checkPasswordLength,
+      password: checkPassword,
       username: checkUsername,
     });
 
-    if (checkUsername || checkPassword || checkPasswordLength) return;
+    if (checkUsername || checkPassword) {
+      const payload = {
+        open: true,
+        message: checkUsername ? ERROR_TEXTS.username : ERROR_TEXTS.lengthPass,
+        error: true,
+      };
+      setNotification(payload);
+      return;
+    }
 
-    const { token, user }: AuthResponse = await http.post('/auth/login', {
+    const response: AuthResponse = await http.post('/auth/login', {
       username,
       password,
     });
+    const { token, user } = response;
 
     if (token) {
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      history.replace({
-        pathname: ROUTES.JOURNAL_LIST,
-      });
+      sessionStorage.setItem('token', token);
+      sessionStorage.setItem('user', JSON.stringify(user));
+      setUser(user);
+
+      setTimeout(() => {
+        history.replace({
+          pathname: ROUTES.JOURNAL_LIST,
+        });
+      }, 2000);
+    } else {
+      const payload = {
+        open: true,
+        message: response,
+        error: true,
+      };
+
+      setNotification(payload);
     }
   };
 

@@ -11,22 +11,23 @@ import { Styles } from './styles';
 import usePostList from './usePostList';
 
 export const PostList = (): JSX.Element => {
-  const { posts, state } = usePostList();
-  console.log(posts);
+  const { posts, journal, loading } = usePostList();
+
+  if (loading) return <>Loading</>;
   return (
     <Template>
       <Header />
       {posts?.length > 0 && (
         <Styles.Header>
-          <BackButton route={ROUTES.JOURNAL_LIST} />
+          <BackButton route={ROUTES.JOURNAL_LIST} title={journal.title} />
           <OutlineButton text="Add note" route={ROUTES.CREATE_POST} />
         </Styles.Header>
       )}
 
       {posts?.length > 0 ? (
         <Styles.Container>
-          {posts.map((post, index: number) => (
-            <Notes key={index} />
+          {posts.map((post: any, index: number) => (
+            <Notes key={index} content={post.content} />
           ))}
 
           <Spacing bottom={30} />
@@ -36,7 +37,7 @@ export const PostList = (): JSX.Element => {
           showText
           route={ROUTES.CREATE_POST}
           text="Create a note"
-          note={state.title || ''}
+          note={journal.title || ''}
         />
       )}
     </Template>

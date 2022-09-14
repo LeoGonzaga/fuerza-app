@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import http from '../../../services/api';
+import { useUserStore } from '../../../store/user';
 
 type StateType = {
   id: string;
@@ -8,14 +8,15 @@ type StateType = {
 };
 
 const usePostList = () => {
-  const { state }: any = useLocation();
+  const { journal }: any = useUserStore();
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getPostsByJournal = async () => {
-    const response: any = await http.get(`journals/entries/${state.id}`);
-    console.log('pst, reponse', response);
+    const response: any = await http.get(`journals/entries/${journal.id}`);
     if (response.entries) {
       setPosts(response.entries);
+      setLoading(false);
     }
   };
 
@@ -23,7 +24,7 @@ const usePostList = () => {
     getPostsByJournal();
   }, []);
 
-  return { posts, state };
+  return { posts, journal, loading };
 };
 
 export default usePostList;

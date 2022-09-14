@@ -10,8 +10,9 @@ import Spacing from '../../../components/Spacing';
 import useJournalList from './useJournalList';
 
 export const JournalList = (): JSX.Element => {
-  const { journals } = useJournalList();
+  const { journals, handleSelectedJournal, loading } = useJournalList();
 
+  if (loading) return <>Loading</>;
   return (
     <Template>
       <Header
@@ -22,12 +23,12 @@ export const JournalList = (): JSX.Element => {
       {journals.length > 0 ? (
         <Styles.Container>
           {journals?.map((journal: any, index: number) => (
-            <Cover
+            <div
               key={index}
-              title={journal.title}
-              id={journal.id}
-              dark={index % 2 !== 0}
-            />
+              onClick={() => handleSelectedJournal(journal.id, journal.title)}
+            >
+              <Cover title={journal.title} dark={index % 2 !== 0} />
+            </div>
           ))}
 
           <Spacing bottom={30} />

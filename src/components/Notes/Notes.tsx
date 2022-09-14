@@ -2,10 +2,14 @@ import React from 'react';
 import Text from '../Text';
 import { Styles } from './styles';
 
-export const Notes = (): JSX.Element => {
+type NotesProps = {
+  content: string;
+};
+
+export const Notes = ({ content }: NotesProps): JSX.Element => {
   return (
     <Styles.Container>
-      <Text>The h1, h2, h3, h4, h5, and h6 elements</Text>
+      <Text>{content}</Text>
     </Styles.Container>
   );
 };

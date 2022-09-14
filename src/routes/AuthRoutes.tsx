@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Redirect, Route, RouteProps } from 'react-router';
-import { useHistory } from 'react-router-dom';
-import { ROUTES } from '../constants/routes';
+import { useUserStore } from '../store/user';
 
 function PrivateRoute({ ...rest }: RouteProps) {
-  const history = useHistory();
-  const [isAuth, setIsAuth] = useState<boolean>(false);
+  const { setUser }: any = useUserStore();
 
-  useEffect(() => {
-    const value = localStorage.getItem('token');
-    if (value) {
-      setIsAuth(!!value);
-      history.replace({ pathname: ROUTES.JOURNAL_LIST });
-    } else {
-      history.replace({ pathname: ROUTES.SIGN_IN });
-    }
-  }, []);
+  const user = sessionStorage.getItem('user');
+  setUser(JSON.parse(user || ''));
 
-  return isAuth ? <Route {...rest} /> : <Redirect to="/" />;
+  return user ? <Route {...rest} /> : <Redirect to="/" />;
 }
 
 export default PrivateRoute;
