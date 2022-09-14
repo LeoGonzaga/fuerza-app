@@ -21,7 +21,6 @@ const useJournalList = () => {
     if (user) {
       const parseUser = JSON.parse(user || '');
       const response: any = await http.get(`/journals/${parseUser.id}`);
-      console.log(response);
 
       if (response?.journals) {
         setJournals(response.journals);

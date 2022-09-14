@@ -14,7 +14,6 @@ const usePostList = () => {
 
   const getPostsByJournal = async () => {
     const response: any = await http.get(`journals/entries/${journal.id}`);
-    console.log('pst, reponse', response);
     if (response.entries) {
       setPosts(response.entries);
       setLoading(false);

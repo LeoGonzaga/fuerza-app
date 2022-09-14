@@ -7,7 +7,6 @@ const AUTO_CLOSE = 3;
 export const Notification = (): JSX.Element => {
   const { notification, setNotification }: any = useNotificationStore();
 
-  console.log(notification);
   useEffect(() => {
     if (notification.open && AUTO_CLOSE > 0) {
       setTimeout(() => {
