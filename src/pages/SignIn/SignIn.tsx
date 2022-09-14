@@ -10,12 +10,22 @@ import Row from '../../components/Row';
 import Logo from '../../components/Logo';
 import Template from '../../components/Template';
 import { ROUTES } from '../../constants/routes';
+import useSignIn from './useSignIn';
 
 export const SignIn = (): JSX.Element => {
+  const {
+    username,
+    password,
+    handleChangeUsername,
+    handleChangePassword,
+    handleSubmit,
+    errors,
+  } = useSignIn();
+
   return (
     <Template center>
       <Styles.Container>
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <Logo size={206} />
           <Spacing top={78} />
           <TitlePageWithAction
@@ -23,9 +33,20 @@ export const SignIn = (): JSX.Element => {
             route={ROUTES.SIGN_UP}
             text="Sign Up"
           />
-          <TextInput placeholder="Your usename" />
+          <TextInput
+            placeholder="Your usename"
+            value={username}
+            onChange={handleChangeUsername}
+            error={errors.username}
+          />
           <Spacing top={29} />
-          <TextInput placeholder="Your password" />
+          <TextInput
+            placeholder="Your password"
+            type="password"
+            value={password}
+            onChange={handleChangePassword}
+            error={errors.password}
+          />
           <Spacing top={12} />
 
           <Row justify="flex-end">
@@ -33,7 +54,7 @@ export const SignIn = (): JSX.Element => {
           </Row>
           <Spacing top={40} />
           <Row justify="center">
-            <ActionButton>Log In</ActionButton>
+            <ActionButton onClick={handleSubmit}>Log In</ActionButton>
           </Row>
         </form>
       </Styles.Container>
